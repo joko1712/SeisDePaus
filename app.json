@@ -1,10 +1,11 @@
 {
-  "expo": {
-    "name": "SeisDePaus",
-    "slug": "SeisDePaus",
-    "version": "1.0.0",
-    "assetBundlePatterns": [
-      "**/*"
-    ]
-  }
+    "expo": {
+        "name": "SeisDePaus",
+        "slug": "SeisDePaus",
+        "version": "1.0.0",
+        "assetBundlePatterns": ["**/*"],
+        "web": {
+            "publicPath": "/SeisDePausWeb/"
+        }
+    }
 }

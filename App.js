@@ -21,12 +21,20 @@ export default function App() {
     };
 
     const handleReset = () => {
+        // Shuffle the images
+        const shuffledImages = images.sort(() => Math.random() - 0.5);
+        // Set the images
+        setImages(shuffledImages);
+        // Reset the current index to 0
         setCurrentIndex(0);
     };
 
     if (images[currentIndex] === "https://deckofcardsapi.com/static/img/6C.png") {
         return (
             <View style={styles.container}>
+                <Text>
+                    {currentIndex}/{images.length}
+                </Text>
                 <TouchableOpacity>
                     <Image source={{ uri: images[currentIndex] }} style={styles.image} />
                 </TouchableOpacity>
@@ -38,6 +46,9 @@ export default function App() {
     } else {
         return (
             <View style={styles.container}>
+                <Text>
+                    {currentIndex}/{images.length}
+                </Text>
                 <TouchableOpacity onPress={handlePress}>
                     <Image source={{ uri: images[currentIndex] }} style={styles.image} />
                 </TouchableOpacity>
