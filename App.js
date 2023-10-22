@@ -70,6 +70,7 @@ const styles = StyleSheet.create({
         backgroundColor: "#fff",
         alignItems: "center",
         justifyContent: "center",
+        paddingTop: 60,
     },
     image: {
         width: 400,
