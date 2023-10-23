@@ -1,11 +1,11 @@
 import React from "react";
-import { NavigationContainer } from "@react-navigation/native";
-import BottomTabNavigator from "./BottomTabNavigator"; // Import the BottomTabNavigator
+import MainApp from "./MainApp";
+import { AuthProvider } from "./AuthContext";
 
-export default function MainApp() {
+export default function App() {
     return (
-        <NavigationContainer>
-            <BottomTabNavigator />
-        </NavigationContainer>
+        <AuthProvider>
+            <MainApp />
+        </AuthProvider>
     );
 }

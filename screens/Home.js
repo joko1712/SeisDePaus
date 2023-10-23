@@ -8,9 +8,14 @@ export default function Home() {
 
     useEffect(() => {
         async function fetchDeck() {
-            const fetchedImages = await fetchDeckOfCards();
-            setImages(fetchedImages);
-            setLoading(false);
+            if (user) {
+                // Fetch from firebase
+                console.log("Fetching from firebase");
+            } else {
+                const fetchedImages = await fetchDeckOfCards();
+                setImages(fetchedImages);
+                setLoading(false);
+            }
         }
 
         fetchDeck();

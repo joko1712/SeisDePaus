@@ -14,7 +14,7 @@ export default function BottomTabNavigator() {
             screenOptions={{
                 headerShown: false,
             }}>
-            <Tab.Screen name='Home' component={Home} />
+            <Tab.Screen name='Seis De Paus' component={Home} />
             <Tab.Screen name='Login' component={Login} />
             <Tab.Screen name='Register' component={Register} />
             <Tab.Screen name='UploadDeck' component={UploadDeck} />
