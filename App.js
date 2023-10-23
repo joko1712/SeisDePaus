@@ -1,15 +1,16 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import BottomTabNavigator from "./BottomTabNavigator";
+import Navbar from "./Navbar";
 import Home from "./screens/Home";
 import Login from "./screens/Login";
 import Register from "./screens/Register";
 import UploadDeck from "./screens/UploadDeck";
+import { Route, Routes } from "react-router-dom";
+import BottomTabNavigator from "./BottomTabNavigator";
+import { StyleSheet } from "react-native";
 
 function App() {
     return (
-        <Router>
-            <Navbar />
+        <div style={styles.container}>
             <Routes>
                 <Route path='/' element={<Home />} />
                 <Route path='/login' element={<Login />} />
@@ -17,8 +18,18 @@ function App() {
                 <Route path='/uploaddeck' element={<UploadDeck />} />
             </Routes>
             <BottomTabNavigator />
-        </Router>
+        </div>
     );
 }
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        backgroundColor: "#fff",
+        alignItems: "center",
+        justifyContent: "center",
+        paddingTop: 60,
+    },
+});
 
 export default App;

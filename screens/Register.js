@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { View, Button } from "react-native";
+import { View, Button, TextInput } from "react-native";
+
 import { GoogleAuthProvider } from "firebase/auth";
 
 export default function Register() {
