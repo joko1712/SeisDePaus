@@ -16,12 +16,29 @@ export default function Home() {
             } else {
                 const fetchedImages = await fetchDeckOfCards();
                 setImages(fetchedImages);
-                setLoading(false);
+                setLoading(true);
             }
         }
 
         fetchDeck();
     }, []);
+
+    if (loading) {
+        let i = 0;
+
+        while (i < images.length + 1) {
+            console.log("images.length", images[i]);
+            i++;
+        }
+
+        setLoading(false);
+
+        return (
+            <View style={styles.container}>
+                <Text>Loading...</Text>
+            </View>
+        );
+    }
 
     const handlePress = () => {
         setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);

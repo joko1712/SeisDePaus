@@ -5,7 +5,10 @@
         "version": "1.0.0",
         "assetBundlePatterns": ["**/*"],
         "web": {
-            "publicPath": "/SeisDePausWeb/"
+            "publicPath": "/SeisDePausWeb/",
+            "build": {
+                "publicUrl": "https://joko1712.github.io/SeisDePausWeb/"
+            }
         }
     }
 }
