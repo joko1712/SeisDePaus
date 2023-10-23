@@ -1,23 +1,24 @@
 import React from "react";
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import Home from "./screens/Home";
-import Login from "./screens/Login";
-import Register from "./screens/Register";
-import UploadDeck from "./screens/UploadDeck";
+import { Link } from "react-router-dom";
+import { View, Button } from "react-native";
 
-const Tab = createBottomTabNavigator();
-
-export default function BottomTabNavigator() {
+function BottomTabNavigator() {
     return (
-        <Tab.Navigator
-            initialRouteName='Home'
-            screenOptions={{
-                headerShown: false,
-            }}>
-            <Tab.Screen name='Seis De Paus' component={Home} />
-            <Tab.Screen name='Login' component={Login} />
-            <Tab.Screen name='Register' component={Register} />
-            <Tab.Screen name='UploadDeck' component={UploadDeck} />
-        </Tab.Navigator>
+        <View style={{ flexDirection: "row", justifyContent: "space-around", padding: 10 }}>
+            <Link to='/'>
+                <Button title='Home' />
+            </Link>
+            <Link to='/login'>
+                <Button title='Login' />
+            </Link>
+            <Link to='/register'>
+                <Button title='Register' />
+            </Link>
+            <Link to='/uploaddeck'>
+                <Button title='Upload Deck' />
+            </Link>
+        </View>
     );
 }
+
+export default BottomTabNavigator;
