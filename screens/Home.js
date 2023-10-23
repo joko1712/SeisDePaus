@@ -1,16 +1,18 @@
 import React, { useState, useEffect } from "react";
 import { Image, View, TouchableOpacity, StyleSheet, Text, Button } from "react-native";
+import { AuthContext } from "../AuthContext";
 
 export default function Home() {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [images, setImages] = useState([]);
     const [loading, setLoading] = useState(true);
+    const { user } = useContext(AuthContext);
 
     useEffect(() => {
         async function fetchDeck() {
             if (user) {
                 // Fetch from firebase
-                console.log("Fetching from firebase");
+                console.log("Fetching from firebase", user.displayName);
             } else {
                 const fetchedImages = await fetchDeckOfCards();
                 setImages(fetchedImages);

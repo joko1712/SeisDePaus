@@ -10,8 +10,6 @@
     },
     "dependencies": {
         "@expo/webpack-config": "^19.0.0",
-        "@react-native-firebase/app": "^18.5.0",
-        "@react-native-firebase/auth": "^18.5.0",
         "@react-native-google-signin/google-signin": "^10.0.1",
         "@react-navigation/bottom-tabs": "^6.5.10",
         "@react-navigation/native": "^6.1.9",
@@ -19,6 +17,7 @@
         "expo": "~49.0.15",
         "expo-splash-screen": "~0.20.5",
         "expo-status-bar": "~1.6.0",
+        "firebase": "^10.5.0",
         "react": "18.2.0",
         "react-dom": "^18.2.0",
         "react-native": "0.72.6",
