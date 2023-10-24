@@ -17,6 +17,7 @@ function App() {
                 <Route path='/register' element={<Register />} />
                 <Route path='/uploaddeck' element={<UploadDeck />} />
             </Routes>
+            <BottomTabNavigator />
         </div>
     );
 }

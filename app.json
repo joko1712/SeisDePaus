@@ -1,14 +1,28 @@
 {
-    "expo": {
-        "name": "SeisDePaus",
-        "slug": "SeisDePaus",
-        "version": "1.0.0",
-        "assetBundlePatterns": ["**/*"],
-        "web": {
-            "publicPath": "/SeisDePausWeb/",
-            "build": {
-                "publicUrl": "https://joko1712.github.io/SeisDePausWeb/"
-            }
-        }
-    }
+  "expo": {
+    "name": "SeisDePaus",
+    "slug": "SeisDePaus",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "web": {
+      "publicPath": "/SeisDePausWeb/",
+      "build": {
+        "publicUrl": "https://joko1712.github.io/SeisDePausWeb/"
+      }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "bd150fee-06d3-4cde-97a8-b24801e0ee9f"
+      }
+    },
+    "owner": "joko17",
+    "runtimeVersion": "1.0.0",
+    "updates": {
+      "url": "https://u.expo.dev/bd150fee-06d3-4cde-97a8-b24801e0ee9f"
+    },
+    "android": {},
+    "ios": {}
+  }
 }

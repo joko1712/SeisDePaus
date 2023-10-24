@@ -8,6 +8,8 @@ export default function Home() {
     const [loading, setLoading] = useState(true);
     const { user } = useContext(AuthContext);
 
+    const [intervalId, setIntervalId] = useState(null);
+
     useEffect(() => {
         async function fetchDeck() {
             if (user) {
@@ -23,19 +25,33 @@ export default function Home() {
         fetchDeck();
     }, []);
 
-    if (loading) {
-        let i = 0;
+    useEffect(() => {
+        if (loading) {
+            const showImages = () => {
+                setCurrentIndex((prevIndex) => {
+                    if (prevIndex === images.length - 1) {
+                        setLoading(false);
+                        clearInterval(intervalId);
+                        return 0;
+                    }
+                    return prevIndex + 1;
+                });
+            };
 
-        while (i < images.length + 1) {
-            console.log("images.length", images[i]);
-            i++;
+            const id = setInterval(showImages, 100);
+            setIntervalId(id);
+
+            return () => clearInterval(id);
         }
+    }, [loading, images]);
 
-        setLoading(false);
-
+    if (loading) {
         return (
             <View style={styles.container}>
                 <Text>Loading...</Text>
+                <View style={styles.hidden}>
+                    <Image source={{ uri: images[currentIndex] }} style={styles.image} />
+                </View>
             </View>
         );
     }
@@ -49,6 +65,7 @@ export default function Home() {
         const shuffledImages = images.sort(() => Math.random() - 0.5);
         // Set the images
         setImages(shuffledImages);
+
         // Reset the current index to 0
         setCurrentIndex(0);
     };
@@ -57,7 +74,8 @@ export default function Home() {
         return (
             <View style={styles.container}>
                 <Text>
-                    {currentIndex}/{images.length}
+                    {currentIndex + 1}/{images.length - currentIndex} ={" "}
+                    {((1 / (images.length - currentIndex)) * 100).toFixed(2)}%
                 </Text>
                 <TouchableOpacity>
                     <Image source={{ uri: images[currentIndex] }} style={styles.image} />
@@ -71,7 +89,8 @@ export default function Home() {
         return (
             <View style={styles.container}>
                 <Text>
-                    {currentIndex}/{images.length}
+                    {currentIndex + 1}/{images.length - currentIndex} ={" "}
+                    {((1 / (images.length - currentIndex)) * 100).toFixed(2)}%
                 </Text>
                 <TouchableOpacity onPress={handlePress}>
                     <Image source={{ uri: images[currentIndex] }} style={styles.image} />
@@ -103,5 +122,8 @@ const styles = StyleSheet.create({
     },
     Text: {
         fontSize: 40,
+    },
+    hidden: {
+        display: "none",
     },
 });
