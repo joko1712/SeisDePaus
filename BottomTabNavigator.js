@@ -8,6 +8,9 @@ function BottomTabNavigator() {
             <Link to='/'>
                 <Button title='Home' />
             </Link>
+            <Link to='/rings'>
+                <Button title='Rings' />
+            </Link>
             <Link to='/login'>
                 <Button title='Login' />
             </Link>
