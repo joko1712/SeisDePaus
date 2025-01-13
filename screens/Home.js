@@ -1,5 +1,12 @@
 import React, { useState, useEffect, useContext } from "react";
-import { Image, View, TouchableOpacity, StyleSheet, Text, Button } from "react-native";
+import {
+    Image,
+    View,
+    TouchableOpacity,
+    StyleSheet,
+    Text,
+    Button,
+} from "react-native";
 import { AuthContext } from "../AuthContext";
 
 export default function Home() {
@@ -17,6 +24,7 @@ export default function Home() {
                 console.log("Fetching from firebase", user.displayName);
             } else {
                 const fetchedImages = await fetchDeckOfCards();
+                console.log(fetchedImages);
                 setImages(fetchedImages);
                 setLoading(true);
             }
@@ -50,7 +58,10 @@ export default function Home() {
             <View style={styles.container}>
                 <Text>Loading...</Text>
                 <View style={styles.hidden}>
-                    <Image source={{ uri: images[currentIndex] }} style={styles.image} />
+                    <Image
+                        source={{ uri: images[currentIndex] }}
+                        style={styles.image}
+                    />
                 </View>
             </View>
         );
@@ -70,14 +81,19 @@ export default function Home() {
         setCurrentIndex(0);
     };
 
-    if (images[currentIndex] === "https://deckofcardsapi.com/static/img/6C.png") {
+    if (
+        images[currentIndex] === "https://deckofcardsapi.com/static/img/6C.png"
+    ) {
         return (
             <View style={styles.container}>
                 <Text>
                     {currentIndex}/{images.length}
                 </Text>
                 <TouchableOpacity style={styles.imageContainer}>
-                    <Image source={{ uri: images[currentIndex] }} style={styles.image} />
+                    <Image
+                        source={{ uri: images[currentIndex] }}
+                        style={styles.image}
+                    />
                     <Text style={styles.textOverImage}>
                         EHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH!!!!
                     </Text>
@@ -91,10 +107,13 @@ export default function Home() {
         return (
             <View style={styles.container}>
                 <Text>
-                    {currentIndex}/{images.length}
+                    {currentIndex}/{images.length + 2}
                 </Text>
                 <TouchableOpacity onPress={handlePress}>
-                    <Image source={{ uri: images[currentIndex] }} style={styles.image} />
+                    <Image
+                        source={{ uri: images[currentIndex] }}
+                        style={styles.image}
+                    />
                 </TouchableOpacity>
             </View>
         );
@@ -102,7 +121,9 @@ export default function Home() {
 }
 
 async function fetchDeckOfCards() {
-    const response = await fetch("https://deckofcardsapi.com/api/deck/new/draw/?count=52");
+    const response = await fetch(
+        "https://deckofcardsapi.com/api/deck/new/draw/?count=52&jokers_enabled=true"
+    );
     const data = await response.json();
 
     return data.cards.map((card) => card.image);
