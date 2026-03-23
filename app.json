@@ -9,9 +9,9 @@
     "web": {
       "bundler": "metro",
       "output": "single",
-      "publicPath": "/SeisDePausWeb/",
+      "publicPath": "/SeisDePaus/",
       "build": {
-        "publicUrl": "https://joko1712.github.io/SeisDePausWeb/"
+        "publicUrl": "https://joko1712.github.io/SeisDePaus/"
       }
     },
     "extra": {
