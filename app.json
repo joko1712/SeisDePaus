@@ -8,11 +8,10 @@
     ],
     "web": {
       "bundler": "metro",
-      "output": "single",
-      "publicPath": "/SeisDePaus/",
-      "build": {
-        "publicUrl": "https://joko1712.github.io/SeisDePaus/"
-      }
+      "output": "single"
+    },
+    "experiments": {
+      "baseUrl": "/SeisDePaus"
     },
     "extra": {
       "eas": {
