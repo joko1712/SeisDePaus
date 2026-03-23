@@ -35,6 +35,9 @@ jobs:
           EXPO_PUBLIC_FIREBASE_MEASUREMENT_ID: ${{ secrets.FIREBASE_MEASUREMENT_ID }}
         run: npx expo export --platform web
 
+      - name: Disable Jekyll
+        run: touch dist/.nojekyll
+
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist
