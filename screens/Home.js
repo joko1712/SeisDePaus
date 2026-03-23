@@ -87,7 +87,7 @@ export default function Home() {
         return (
             <View style={styles.container}>
                 <Text>
-                    {currentIndex}/{images.length}
+                    {currentIndex + 1}/{images.length + 2}
                 </Text>
                 <TouchableOpacity style={styles.imageContainer}>
                     <Image
@@ -107,7 +107,7 @@ export default function Home() {
         return (
             <View style={styles.container}>
                 <Text>
-                    {currentIndex}/{images.length + 2}
+                    {currentIndex + 1}/{images.length + 2}
                 </Text>
                 <TouchableOpacity onPress={handlePress}>
                     <Image

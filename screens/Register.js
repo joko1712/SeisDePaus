@@ -1,25 +1,35 @@
 import React, { useState } from "react";
-import { View, Button, TextInput } from "react-native";
-
-import { GoogleAuthProvider } from "firebase/auth";
+import { View, Button, TextInput, Text } from "react-native";
+import { auth } from "../firebaseConfig";
+import {
+    GoogleAuthProvider,
+    signInWithPopup,
+    createUserWithEmailAndPassword,
+} from "firebase/auth";
 
 export default function Register() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
+    const [error, setError] = useState("");
 
     const registerWithGoogle = async () => {
         const provider = new GoogleAuthProvider();
         try {
-            await firebase.auth().signInWithPopup(provider);
+            await signInWithPopup(auth, provider);
         } catch (error) {
             console.error(error);
         }
     };
 
     const registerWithEmail = async (email, password) => {
+        if (password !== confirmPassword) {
+            setError("Passwords do not match");
+            return;
+        }
+        setError("");
         try {
-            await firebase.auth().createUserWithEmailAndPassword(email, password);
+            await createUserWithEmailAndPassword(auth, email, password);
         } catch (error) {
             console.error(error);
         }
@@ -34,8 +44,8 @@ export default function Register() {
                 onChangeText={setConfirmPassword}
                 secureTextEntry={true}
             />
-
-            <Button title='Register with Email' onPress={registerWithEmail} />
+            {error ? <Text style={{ color: "red" }}>{error}</Text> : null}
+            <Button title='Register with Email' onPress={() => registerWithEmail(email, password)} />
             <Button title='Register with Google' onPress={registerWithGoogle} />
         </View>
     );
